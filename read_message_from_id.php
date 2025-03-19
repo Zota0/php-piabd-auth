@@ -11,10 +11,6 @@
         if(mysqli_num_rows($result) == 1) {
 
             $row = mysqli_fetch_row($result);
-            /* Message is encrypted, decrypt it 
-            $encrypt = openssl_encrypt($message, 'aes-256-cbc', 'erre23%$', OPENSSL_RAW_DATA, $iv);
-            $crypted = base64_encode($encrypt);
-            */
             $crypted = $row[3];
             $crypted = base64_decode($crypted);
             $decrypt = openssl_decrypt($crypted, 'aes-256-cbc', 'erre23%$', OPENSSL_RAW_DATA, "");

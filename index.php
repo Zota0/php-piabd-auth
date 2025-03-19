@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -9,8 +12,8 @@
     <?php 
         if(isset($_SESSION['login'])) {
             echo "Witaj " . $_SESSION['login'];
+            header("Location: dashboard.php");
         }
-        die("Already logged in");
     ?>
     <form action="login.php" method="post">
         <div>

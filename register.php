@@ -1,11 +1,10 @@
 <?php
-    session_start();
     require_once('db.php');
 
     if($_SERVER['REQUEST_METHOD'] == 'POST') {
         
         $login = $_POST['login'];
-        $passwd = $_POST['passwd'];
+        $passwd = $_POST['passwd-register'];
 
         var_dump($login, $passwd);
         
@@ -15,20 +14,18 @@
         $passwd .= "\$erre23%$";
         var_dump($passwd);
 
-        $query = "SELECT * FROM users WHERE login = '$login' AND passwd = '$passwd'";
-        $result = mysqli_query($db, $query);
+        $query = "INSERT INTO users VALUES (?, ?)";
+        $stmt = $db->prepare($query);
+        $stmt->bind_param('ss', $login, $passwd);
         
-        if(mysqli_num_rows($result) == 1) {
-            $_SESSION['login'] = $login;
-            echo "login successful";
-
+        if($stmt->execute()) {
+            echo "Zarejestrowano pomyślnie";
         } else {
-
-            header('Location: login.php');
-            exit();
+            echo "Błąd - nie można zarejestrować użytkownika.";
         }
-        
 
+        
+        
         
 
     } else {

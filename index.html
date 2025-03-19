@@ -7,7 +7,6 @@
 </head>
 <body>    
     <form action="login.php" method="post">
-
         <div>
             <label for="login">Login</label>
             <input type="text" name="login" id="login">
@@ -27,6 +26,33 @@
 
         <div>
             <button type="submit">Loguj</button>
+        </div>
+    </form>    
+
+    <br>
+    <br>
+    <hr>
+
+    <form action="register.php" method="post">
+        <div>
+            <label for="login">Login</label>
+            <input type="text" name="login" id="login">
+        </div>
+
+        <div>
+            <label for="passwd">Hasło</label>
+            <input type="password" name="passwd-register" id="passwd-register">
+            <button onclick="showPasswd();" type="button">Show Password</button>
+        </div>
+        <script>
+            function showPasswd() {
+                const passwd = document.getElementById("passwd-register");
+                passwd.type = passwd.type === "password" ? "text" : "password";
+            }
+        </script>
+
+        <div>
+            <button type="submit">Rejestruj</button>
         </div>
     </form>    
 </body>

@@ -5,7 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>php-piabd</title>
 </head>
-<body>    
+<body>
+    <?php 
+        if(isset($_SESSION['login'])) {
+            echo "Witaj " . $_SESSION['login'];
+        }
+        die("Already logged in");
+    ?>
     <form action="login.php" method="post">
         <div>
             <label for="login">Login</label>
